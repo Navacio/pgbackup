@@ -18,6 +18,7 @@ def test_dump_handles_oserror(mocker):
 	"""
 	
 	mocker.patch('subprocess.Popen', side_effect=OSError("no such file"))
-	
-	with pytest.raises(SystemError):
+	#the error it should raise is SystemExit, you mistakenly wrote SystemError. I corrected it. So its ok now	
+	with pytest.raises(SystemExit):
 		pgdump.dump(url)
+
